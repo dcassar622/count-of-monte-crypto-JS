@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Count Of Monte Crypto</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header id='header-section'>
+        <h1>Count Of Monte Crypto</h1>
+    </header>
+    <!-- REFRESH PORTFOLIO -->
+    <div id='refresh-div'>
+        <button id='refresh-btn'>Refresh Portfolio</button>
+    </div>
+    <!-- ENTRIES WRAPPER -->
+    <div id='entries-wrapper'>
+        <!-- ENTRIES HEADER -->
+        <section id='entries-header-container'>
+            <h6 class='grid-cell'>Coin</h6>
+            <h6 class='grid-cell'>Amount</h6>
+            <div class='grid-cell'>
+                <h6 class='header-buy-price'>Buy Price/Unit</h6>
+                <h6>Buy Total Value</h6>
+            </div>
+            <div class='grid-cell'>
+                <h6 class='header-curr-price'>Current Price/Unit</h6>
+                <h6>Current Total Value</h6>
+            </div>
+            <h6 class='grid-cell'>P/L</h6>
+            <h6 class='grid-cell'>% Change</h6>
+            <h6></h6>
+        </section>
+        <!-- ENTRIES -->
+        <section id='entries-container'>
+        </section>
+    </div>
+    <!-- NEW ENTRY FORM -->
+    <div id='add-btn-div'>
+        <button id='add-entry-btn'>Add Entry</button>
+    </div>
+    <section id='form-container' class='invisible'>
+        <form id="entry-form">
+            <label htmlFor="coin">Coin</label>
+            <input id='coin' name="coin" placeholder="ex: BTC, ETH, XMR"></input>
+            <label htmlFor="amount">Amount Bought</label>
+            <input id='amount' name="amount" type="float"></input>
+            <label htmlFor="amount">Buy Price</label>
+            <input id='buyPrice' name="buyPrice" type="float"></input>
+            <button id='submit-form-btn'>Submit</button>
+        </form>
+    </section>
+    <script src="main.js" type='module'></script>
+  </body>
+</html>
