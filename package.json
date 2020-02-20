@@ -1,0 +1,23 @@
+{
+  "name": "count-of-monte-crypto-js",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "dependencies": {
+    "datejs": "^1.0.0-rc3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dcassar622/count-of-monte-crypto-JS.git"
+  },
+  "author": "Daniel Cassar",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dcassar622/count-of-monte-crypto-JS/issues"
+  },
+  "homepage": "https://github.com/dcassar622/count-of-monte-crypto-JS#readme"
+}
