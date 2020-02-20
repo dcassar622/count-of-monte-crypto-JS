@@ -1,5 +1,6 @@
-import { setupUI } from "./components/UI.js";
-import { User } from "./components/User.js";
+import { setupUI } from "../components/UI.js";
+import { User } from "../components/User.js";
+import { setupDBListener } from "./DBListener.js";
 
 export const setupAuth = auth => {
   /* ----- login/logout state change ----- */
@@ -14,13 +15,24 @@ export const setupAuth = auth => {
           let username = data.username;
           let currency = data.currency;
 
+          //setup portfolio greeting
+          const portfolioHeader = document.getElementById("entries-title");
+          portfolioHeader.innerHTML = `
+           <h3>
+              <i class="fas fa-wallet"></i>&nbsp;&nbsp;${username}'s Portfolio 
+           </h3>
+          `;
+
           // setup new user based on the retreived information
           const currUser = new User(user, username, currency);
 
-          //set up user 'crud' options for user
+          // set up user 'crud' options for user
           currUser.createDataOptions();
 
-          // set up app UI, including charts and data tables
+          // set up DB listener, to monitor changes in the user's database
+          setupDBListener(currUser, user);
+
+          // set up app UI, including charts, data tables and news feed
           currUser.renderUI(user);
 
           // get user's entries from db and display them on screen

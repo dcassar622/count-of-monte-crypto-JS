@@ -1,6 +1,7 @@
 import { displayData } from "./MarketCapDataDisplay.js";
 
 export async function setupMarketCapData(currency) {
+  // get top 10 coins by trade volume from Cryptocompare API
   let data = await fetch(
     `https://min-api.cryptocompare.com/data/top/mktcapfull?limit=10&tsym=${currency}`
   );
@@ -9,6 +10,7 @@ export async function setupMarketCapData(currency) {
 
   let filteredCoinData = [];
 
+  // filter relevant coin information to be shown on screen
   coinData.map(function(item, index) {
     filteredCoinData[index] = {
       name: item.CoinInfo.Name,

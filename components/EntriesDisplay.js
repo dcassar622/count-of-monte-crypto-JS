@@ -14,8 +14,10 @@ export function displayEntries(entries, currency) {
       entryContainer.id = entry.id;
       entryContainer.className = "entry-container";
 
-      let entryCoin = document.createElement("p");
+      let entryCoin = document.createElement("a");
       entryCoin.className = "entry-coin";
+      entryCoin.setAttribute("data-toggle", "modal");
+      entryCoin.setAttribute("href", "#coin-chart-container");
       entryCoin.innerHTML = entry.coin;
 
       let entryCoinName = document.createElement("p");
@@ -76,9 +78,8 @@ export function displayEntries(entries, currency) {
         entryDeltaPerc.innerHTML = `${entry.deltaPerc}% &#x2193`;
       }
 
-      let entryDelBtn = document.createElement("button");
-      entryDelBtn.className = "entry-del-btn";
-      entryDelBtn.innerHTML = "Remove";
+      let entryDelBtn = document.createElement("i");
+      entryDelBtn.className = `entry-del-btn fas fa-window-close`;
 
       let showChartBtn = document.createElement("button");
       showChartBtn.className = "show-chart-btn";
@@ -116,11 +117,11 @@ export function displayTotals(buy, curr, delta, deltaPerc, currency) {
 
   let totalsBuyValue = document.createElement("p");
   totalsBuyValue.className = "totals-buy-value grid-cell";
-  totalsBuyValue.innerHTML = `${currencySymbol}${buy}`;
+  totalsBuyValue.innerHTML = `${currencySymbol}${buy}<br><span class='small'>(buy value)<span>`;
 
   let totalsCurrValue = document.createElement("p");
   totalsCurrValue.className = "totals-curr-value grid-cell";
-  totalsCurrValue.innerHTML = `${currencySymbol}${curr}`;
+  totalsCurrValue.innerHTML = `${currencySymbol}${curr}<br><span class='small'>(current value)<span>`;
 
   let totalsDelta = document.createElement("p");
   if (delta >= 0) {
@@ -128,7 +129,7 @@ export function displayTotals(buy, curr, delta, deltaPerc, currency) {
   } else {
     totalsDelta.className = "totals-delta grid-cell loss";
   }
-  totalsDelta.innerHTML = `${currencySymbol}${delta}`;
+  totalsDelta.innerHTML = `${currencySymbol}${delta}<br><span class='small'>(P/L)<span>`;
 
   let totalsDeltaPerc = document.createElement("p");
   if (deltaPerc >= 0) {

@@ -3,11 +3,19 @@ import { getCurrencySymbol } from "./CurrencyManager.js";
 let chart = "";
 let coinChartContainer = document.getElementById("coin-chart-container");
 let entriesSection = document.getElementById("entries-section");
+let marketCapSection = document.getElementById("market-cap-section");
 
 export function setupCoinCharts(currency, user) {
+  let chosenEntry = "";
   entriesSection.addEventListener("click", event => {
-    if (event.target.className === "show-chart-btn") {
-      let chosenEntry = event.target.parentNode.id;
+    if (
+      event.target.className === "show-chart-btn" ||
+      event.target.className === "entry-coin"
+    ) {
+      if (event.target.className === "show-chart-btn")
+        chosenEntry = event.target.parentNode.id;
+      else if (event.target.className === "entry-coin")
+        chosenEntry = event.target.parentNode.parentNode.id;
 
       db.collection("users")
         .doc(user.uid)
@@ -21,6 +29,12 @@ export function setupCoinCharts(currency, user) {
             }
           });
         });
+    }
+  });
+
+  marketCapSection.addEventListener("click", event => {
+    if (event.target.className === "table-coin-name") {
+      setupCoinChart(event.target.innerHTML, currency);
     }
   });
 }
@@ -85,9 +99,9 @@ export async function setupVolumeChart(currency) {
               drawOnChartArea: true,
               color: "white"
             },
-            display: false,
+            display: true,
             scaleLabel: {
-              display: false,
+              display: true,
               labelString: ""
             }
           }
@@ -127,6 +141,8 @@ async function setupCoinChart(coin, currency) {
     priceTime[index] = day.toLocaleDateString();
   });
 
+  let currencySymbol = getCurrencySymbol(currency);
+
   let coinChart = document.getElementById("coin-chart").getContext("2d");
   chart = new Chart(coinChart, {
     type: "line",
@@ -134,7 +150,7 @@ async function setupCoinChart(coin, currency) {
       labels: priceTime,
       datasets: [
         {
-          label: `Today's Price ${coin} / ${currency}`,
+          label: `${coin} / ${currencySymbol} ${currency}`,
           data: coinPrices,
           //backgroundColor: ["rgba(255, 99, 132, 0.2)"],
           borderColor: "white",

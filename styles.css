@@ -22,6 +22,16 @@ body {
   display: none;
 }
 
+a:hover {
+  cursor: pointer;
+}
+
+.section-title h3 {
+  font-size: 40px;
+  text-shadow: 0px 3px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1),
+    0px 18px 23px rgba(0, 0, 0, 0.1);
+}
+
 .grid-cell {
   display: flex;
   flex-direction: column;
@@ -40,8 +50,13 @@ button {
   background: rgb(255, 167, 4);
 }
 
+.small {
+  font-size: 0.75rem;
+  color: rgb(170, 201, 167);
+}
+
 button:hover {
-  background: rgb(77, 69, 65);
+  background: rgb(167, 120, 97);
   color: white;
 }
 
@@ -73,6 +88,16 @@ input {
   height: 100px;
 }
 
+.navbar-nav {
+  width: 40%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+#welcome-message {
+  color: white;
+}
+
 /* ---------- LOGIN MESSAGE ---------- */
 
 #login-message-section {
@@ -83,13 +108,6 @@ input {
   align-items: center;
   margin-top: 30vh;
   margin-left: 20%;
-}
-
-/* ---------- USER OPTIONS ---------- */
-
-#user-options-section {
-  display: flex;
-  justify-content: space-evenly;
 }
 
 /* ---------- FORM ---------- */
@@ -148,9 +166,17 @@ input {
 /* ---------- ENTRIES SECTION ---------- */
 
 #entries-section {
-  margin: 0px 60px 0 60px;
+  margin: 2rem 60px 4rem 60px;
   box-shadow: 0 0 5px 1px rgba(53, 48, 48, 0.507);
   border-radius: 0 50px 0 50px;
+  padding: 0.5rem;
+  background: rgba(86, 87, 81, 0.473);
+}
+
+#entries-title {
+  margin: 2rem 0 0 0;
+  text-align: left;
+  margin-left: 2rem;
 }
 
 .grid-cell {
@@ -171,14 +197,33 @@ input {
 /* ---------- ENTRIES HEADER ---------- */
 
 #entries-header-container {
+  display: none;
+  flex-direction: column;
+  background: #e0dcd7;
+  border-radius: 0 50px 0 0;
+}
+
+#user-options {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem 0;
+  background: rgb(122, 82, 82);
+  border-radius: 0 50px 0 0;
+}
+
+#entries-header-fields {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  border: 1px solid black;
-  border-radius: 0 50px 0 0;
   padding: 10px 10px 5px 0;
-  background: #e0dcd7;
   color: black;
+  text-decoration: underline;
   height: 100px;
+}
+
+.header-buy-price,
+.header-curr-price {
+  font-size: 0.75rem;
+  color: gray;
 }
 
 #user-currency-select {
@@ -194,6 +239,10 @@ input {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.entry-container:first-child {
+  border-radius: 0 50px 0 0;
 }
 
 .entry-container {
@@ -213,11 +262,6 @@ input {
   font-size: 0.75rem;
 }
 
-.header-buy-price,
-.header-curr-price {
-  font-size: 0.75rem;
-}
-
 .button-div {
   display: flex;
   flex-direction: column;
@@ -226,19 +270,22 @@ input {
 }
 
 .entry-del-btn {
+  border-radius: 10px;
+  font-size: 1.3rem;
   position: absolute;
-  border-radius: 0px;
-  background: white;
-  position: absolute;
-  top: 0;
   right: 0;
-  padding: 0 5px;
+  bottom: 0;
+}
+
+.entry-del-btn:hover {
+  cursor: pointer;
+  color: orange;
 }
 
 .show-chart-btn {
-  position: relative;
-  z-index: 3;
   border-radius: 10px;
+  padding: 3px;
+  width: 100%;
 }
 
 /* ---------- TOTALS ---------- */
@@ -254,7 +301,7 @@ input {
   color: white;
   padding-top: 20px;
   padding-right: 10px;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
 }
 
 /* ---------- COIN CHART ---------- */
@@ -267,22 +314,71 @@ input {
   transform: translate(-50%, -25%);
 }
 
+/* ---------- DATA AREA ---------- */
+
+#data-wrapper {
+  background: rgb(41, 38, 38);
+  padding: 1rem 0;
+}
+
+#data-wrapper h3 {
+  color: white;
+}
+
+#data-section-top {
+  position: relative;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 50px;
+  height: 600px;
+}
+
 /* ---------- VOLUME CHART ---------- */
 
 #vol-chart-section {
   position: relative;
-  display: flex;
-  justify-content: center;
-  max-width: 90vw;
-  margin: 100px 0;
+  max-width: 40%;
+  height: 600px;
 }
 
 #vol-chart {
-  max-width: 90%;
-  max-height: 500px;
+  height: 100%;
   background: rgb(36, 34, 34);
-  padding: 10px 30px 30px 30px;
   border-radius: 0 50px 0 50px;
+}
+
+/* ---------- NEWS FEED---------- */
+
+#news-feed-section {
+  height: 100%;
+  overflow-y: scroll;
+  color: white;
+  max-width: 40%;
+  background: rgb(219, 210, 210);
+  box-shadow: 0 0 5px 1px rgba(134, 131, 131, 0.507);
+  border-radius: 5px 50px 5px 50px;
+  padding: 1rem;
+}
+
+.news-item-div {
+  padding: 2rem 0;
+}
+
+.news-title {
+  padding-bottom: 1rem;
+  color: black;
+}
+
+.news-body {
+  text-align: justify;
+  padding-right: 1rem;
+}
+
+.news-image {
+  float: right;
+  height: 200px;
+  border-radius: 10px;
+  margin-left: 1rem;
 }
 
 /* ---------- MARKET CAP TABLE ---------- */
@@ -301,8 +397,8 @@ input {
   grid-template-columns: repeat(5, 1fr);
   margin-top: 80px;
   height: 70px;
-  background: orange;
-  color: white;
+  background: rgb(148, 144, 136);
+  color: black;
   border: 1px solid black;
   border-radius: 0 50px 0 0;
 }
@@ -310,11 +406,64 @@ input {
 .table-row {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
-  height: 100px;
+  padding: 1rem 0;
   border: 1px solid black;
-  background: #e0dcd7;
+  background: rgb(39, 37, 37);
+  color: white;
 }
 
 .table-row:last-child {
   border-radius: 0 0 0 50px;
+}
+
+/* ---------- MEDIA QUERIES ---------- */
+
+/* phones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  .entry-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  #entries-header-container {
+    display: none;
+  }
+
+  #totals-container {
+    grid-template-columns: repeat(1, 1fr);
+    font-size: 1.2rem;
+  }
+
+  .table-row {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  #market-cap-table-header {
+    display: none;
+  }
+}
+
+/* tablets (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 667px) and (max-device-width: 1024px) {
+  .entry-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  #entries-header-container {
+    display: none;
+  }
+
+  #totals-container {
+    font-size: 1rem;
+  }
+
+  .table-row {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  #market-cap-table-header {
+    display: none;
+  }
 }

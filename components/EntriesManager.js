@@ -52,6 +52,7 @@ async function getCurrPrice(coin, currency) {
   return currPrice;
 }
 
+/* ----- Calculate totals from all entries and display them ----- */
 export function calcTotal(entries, currency) {
   let totalBuyValue = 0;
   let totalCurrValue = 0;
@@ -76,7 +77,8 @@ export function calcTotal(entries, currency) {
       totalDeltaPerc,
       currency
     );
-  } else clearTotals();
+  } // if there are no entries
+  else clearTotals();
 }
 
 function clearTotals() {

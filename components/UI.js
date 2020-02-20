@@ -1,5 +1,6 @@
 import { setupVolumeChart, setupCoinCharts } from "./Charts.js";
 import { setupMarketCapData } from "./MarketCapData.js";
+import { setupNewsFeed } from "../components/NewsFeedData.js";
 
 const loggedInLinks = document.querySelectorAll(".logged-in");
 const loggedOutLinks = document.querySelectorAll(".logged-out");
@@ -22,10 +23,11 @@ export const setupUI = (user, currency, username) => {
     });
 
     let usernameArea = document.getElementById("welcome-message");
-    usernameArea.innerHTML = `Welcome ${username}`;
+    usernameArea.innerHTML = `${username}`;
 
     setupVolumeChart(currency);
     setupCoinCharts(currency, user);
+    setupNewsFeed();
     setupMarketCapData(currency);
   } else {
     // if user logged out

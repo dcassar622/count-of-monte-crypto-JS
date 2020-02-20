@@ -40,22 +40,25 @@ export const setupDataOptions = (user, User) => {
   /* DELETE ENTRY */
   const entriesSection = document.getElementById("entries-section");
   entriesSection.addEventListener("click", event => {
-    if (event.target.className === "entry-del-btn") {
-      db.collection("users")
-        .doc(user.uid)
-        .collection("entries")
-        .get()
-        .then(snapshot => {
-          snapshot.forEach(doc => {
-            if (event.target.parentNode.id === doc.id) {
-              db.collection("users")
-                .doc(user.uid)
-                .collection("entries")
-                .doc(doc.id)
-                .delete();
-            }
+    console.log(event.target.className);
+    if (event.target.className === "entry-del-btn fas fa-window-close") {
+      if (confirm("You are about to delete this entry. Proceed?")) {
+        db.collection("users")
+          .doc(user.uid)
+          .collection("entries")
+          .get()
+          .then(snapshot => {
+            snapshot.forEach(doc => {
+              if (event.target.parentNode.id === doc.id) {
+                db.collection("users")
+                  .doc(user.uid)
+                  .collection("entries")
+                  .doc(doc.id)
+                  .delete();
+              }
+            });
           });
-        });
+      }
     }
   });
 

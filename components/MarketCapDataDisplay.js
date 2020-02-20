@@ -1,5 +1,6 @@
 import { getCurrencySymbol } from "./CurrencyManager.js";
 
+// show data related to top 10 trading crypto coins
 export function displayData(coinData, currency) {
   let marketCapSection = document.getElementById("market-cap-section");
   let currencySymbol = getCurrencySymbol(currency);
@@ -8,8 +9,10 @@ export function displayData(coinData, currency) {
     let tableRow = document.createElement("div");
     tableRow.className = "table-row";
 
-    let coinName = document.createElement("p");
+    let coinName = document.createElement("a");
     coinName.className = "table-coin-name";
+    coinName.setAttribute("data-toggle", "modal");
+    coinName.setAttribute("href", "#coin-chart-container");
     coinName.innerHTML = item.name;
 
     let coinFullName = document.createElement("p");
@@ -27,11 +30,11 @@ export function displayData(coinData, currency) {
 
     let coinVolume = document.createElement("p");
     coinVolume.className = "table-coin-volume grid-cell";
-    coinVolume.innerHTML = `${currencySymbol} ${item.volume}`;
+    coinVolume.innerHTML = `${currencySymbol} ${item.volume} B`;
 
     let coinMarketCap = document.createElement("p");
     coinMarketCap.className = "table-coin-market-cap grid-cell";
-    coinMarketCap.innerHTML = `${currencySymbol} ${item.marketCap}`;
+    coinMarketCap.innerHTML = `${currencySymbol} ${item.marketCap} B`;
 
     let coinDeltaPerc = document.createElement("p");
     if (item.deltaPerc >= 0) {
