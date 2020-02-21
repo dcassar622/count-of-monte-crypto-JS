@@ -43,7 +43,7 @@ export async function setupVolumeChart(currency) {
   let currencySymbol = getCurrencySymbol(currency);
 
   let volData = await fetch(
-    `https://min-api.cryptocompare.com/data/exchange/histoday?tsym=${currency}&limit=200`
+    `https://min-api.cryptocompare.com/data/exchange/histohour?tsym=${currency}&limit=168`
   );
   let volJSON = await volData.json();
   let volume = volJSON.Data;
@@ -55,8 +55,10 @@ export async function setupVolumeChart(currency) {
 
   let volumeTime = [];
   volume.map(function(item, index) {
-    let day = new Date(item.time);
-    volumeTime[index] = day.getUTCDate();
+    let ms = item.time;
+    let time = new Date(ms);
+    let hour = time.getDay();
+    volumeTime[index] = hour;
   });
 
   let ctx = document.getElementById("vol-chart").getContext("2d");
@@ -66,7 +68,7 @@ export async function setupVolumeChart(currency) {
       labels: volumeTime,
       datasets: [
         {
-          label: `Volume / Billion ${currencySymbol} ${currency}`,
+          label: `Crypto Market Vol/B --- ${currencySymbol}${currency} (7 days) `,
           data: volumeAmount,
           backgroundColor: "rgba(50, 200, 132, 0.2)",
           borderColor: "white",
@@ -96,12 +98,12 @@ export async function setupVolumeChart(currency) {
         xAxes: [
           {
             gridLines: {
-              drawOnChartArea: true,
+              drawOnChartArea: false,
               color: "white"
             },
-            display: true,
+            display: false,
             scaleLabel: {
-              display: true,
+              display: false,
               labelString: ""
             }
           }
@@ -125,7 +127,7 @@ export async function setupVolumeChart(currency) {
 
 async function setupCoinChart(coin, currency) {
   let data = await fetch(
-    `https://min-api.cryptocompare.com/data/v2/histoday?fsym=${coin}&tsym=${currency}&limit=100`
+    `https://min-api.cryptocompare.com/data/v2/histohour?fsym=${coin}&tsym=${currency}&limit=168`
   );
   let coinJSON = await data.json();
   let coinData = await coinJSON.Data.Data;
@@ -137,8 +139,8 @@ async function setupCoinChart(coin, currency) {
 
   let priceTime = [];
   coinData.map(function(item, index) {
-    let day = new Date(item.time);
-    priceTime[index] = day.toLocaleDateString();
+    let time = new Date(item.time);
+    priceTime[index] = time.getHours();
   });
 
   let currencySymbol = getCurrencySymbol(currency);
@@ -180,10 +182,10 @@ async function setupCoinChart(coin, currency) {
         xAxes: [
           {
             gridLines: {
-              drawOnChartArea: true,
+              drawOnChartArea: false,
               color: "#C0C0C0"
             },
-            display: true,
+            display: false,
             scaleLabel: {
               display: false,
               labelString: ""

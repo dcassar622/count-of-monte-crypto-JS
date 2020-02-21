@@ -24,12 +24,12 @@
       <div id="page-wrapper">
         <!-- NAV -->
         <nav class='navbar navbar-expand-md navbar-dark bg-dark'>
-            <a href="" class="navbar-brand">Count Of Monte Crypto</a>
+            <a href="" class="navbar-brand" id='logo'>Count Of Monte <span>Crypto</span></a>
             <ul class='nav navbar-nav ml-auto'>
                 <li class='nav-item logged-in' id='welcome-message' style="display:none;"></li>
+                <li class='nav-item logged-in' style="display:none;"><a href="#" id='logout'>Logout</a></li>
                 <li class='nav-item logged-out' style="display:none;"><a href="#modal-signup" data-toggle='modal'>Sign Up</a></li>
                 <li class='nav-item logged-out' style="display:none;"><a href="#modal-login" data-toggle='modal'>Login</a></li>
-                <li class='nav-item logged-in' style="display:none;"><a href="#" id='logout'>Logout</a></li>
             </ul>
         </nav>
        
@@ -145,12 +145,9 @@
 
         <div id='entries-section'>
 
-            <!-- ENTRIES HEADER -->
+            <!-- ENTRIES HEADER 
             <section id='entries-header-container'>
-                <div id='user-options'>
-                    <button id='update-btn' class='logged-in'>Refresh &#x27F3</button>
-                    <button id='add-entry-btn' class='logged-in' data-toggle="modal" data-target="#modal-entry">Add Entry &#x2b</button>
-                </div>
+                
                 <div id='entries-header-fields'>
                     <h6 class='grid-cell'>Coin</h6>
                     <h6 class='grid-cell'>Amount</h6>
@@ -165,12 +162,26 @@
                     <h6 class='grid-cell'>P/L</h6>
                     <h6 class='grid-cell'>% Change</h6>
                     <div>
-                        <select id='currency-selector'>
-                            <option value="USD">&#36; USD</option>
-                            <option value="GBP">&#163; GBP</option>
-                            <option value="EUR">&#8364; EUR</option>
-                        </select>
+                       
                     </div>
+                </div>
+                
+            </section> -->
+            <section id='user-options-wrapper'>
+                <div id="user-options-container">
+                    <select name="sort-order-selector" id="sort-order-selector">
+                        <option selected disabled>&#x2195; Sort By</option>
+                        <option value="date">Date</option>
+                        <option value="coin">Coin</option>
+                    </select>
+                    <select id='currency-selector'>
+                        <option value="USD">&#36; USD</option>
+                        <option value="GBP">&#163; GBP</option>
+                        <option value="EUR">&#8364; EUR</option>
+                    </select>
+                    <button id='add-entry-btn' class='logged-in' data-toggle="modal" data-target="#modal-entry">&#x2b; Add Entry</button>
+                    <button id='update-btn' class='logged-in'>&#x27F3; Refresh</button>
+              
                 </div>
             </section>
             <!-- ENTRIES -->
@@ -187,7 +198,7 @@
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4>Price Chart</h4>
+                            <h4>Price Chart (7 days)</h4>
                             <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span></button>
                         </div>
                         <div class="modal-body" style="background-color: darkgray;">
@@ -198,34 +209,50 @@
                 </div>
             </section>
         </div>
+
+        <!--GENERAL DATA AREA-->
+        
         <div id='data-wrapper'>
-            <div id="entries-title" class='section-title'>
+            <div id='data-section-title' class='section-title'>
                 <h3><i class="fas fa-info"></i>&nbsp;&nbsp;Daily Crypto</h3>
             </div>
-            <div id="data-section-top">
-                <!-- VOLUME CHART --> 
-                <section id='vol-chart-section'>
-                
-                    <canvas id="vol-chart"><br></canvas>
-                </section>
+            <div id="data-area">
+                <div id="data-area-left">
 
-                <!-- NEWS FEED -->
-                <section id='news-feed-section'></section>
-            </div>
-            
-            <!--MARKET CAP TABLE-->
-            <div id="market-cap-section">
-            
-                <!-- TABLE HEADER -->
-                <section id='market-cap-table-header'>
-                    <h6 class='grid-cell'>Coin</h6>
-                    <h6 class='grid-cell'>Price</h6>
-                    <h6 class='grid-cell'>Trade Volume</h6>
-                    <h6 class='grid-cell'>Market Cap</h6>
-                    <h6 class='grid-cell'>% Change</h6>
-                </section>
+                    <!-- VOLUME CHART --> 
+                    <section id='vol-chart-section'>
+                        <h4>Total Exchange Volume</h4>
+                        <canvas id="vol-chart"><br></canvas>
+                    </section>
+                    
+                    <!--MARKET CAP TABLE-->
+                    <div id="market-cap-section">
+                     <h4>Top 10 Coins by Market Cap</h4>
+                        <!-- TABLE HEADER -->
+                        <section id='market-cap-table-header'>
+                            <h6 class='grid-cell'>Coin</h6>
+                            <h6 class='grid-cell'>Price</h6>
+                            <h6 class='grid-cell'>Trade Volume</h6>
+                            <h6 class='grid-cell'>Market Cap</h6>
+                            <h6 class='grid-cell'>% Change</h6>
+                        </section>
+                    </div>
+                </div>
+
+            <!-- NEWS FEED -->
+            <section id='news-feed-section'>
+                <h4 class='news-header'>Latest Crypto News</h4>
+                <div id='news-area'></h4>
+            </section>
             </div>
         </div>
+
+        <!-- FOOTER -->
+        <section id='footer-wrapper' class='wrapper'>
+            <h5>Website design by Daniel Cassar</h5>
+            <h6>&#xA9; Count Of Monte Crypto 2020</h5>
+        </section>
+        
     </div>
 
 

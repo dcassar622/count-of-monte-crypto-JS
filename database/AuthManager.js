@@ -6,6 +6,7 @@ export const setupAuth = auth => {
   /* ----- login/logout state change ----- */
   auth.onAuthStateChanged(user => {
     if (user) {
+      console.log(user.uid);
       // get user's username and currency of choice
       db.collection("users")
         .doc(user.uid)
@@ -14,6 +15,7 @@ export const setupAuth = auth => {
           let data = snapshot.data();
           let username = data.username;
           let currency = data.currency;
+          let order = data.order;
 
           //setup portfolio greeting
           const portfolioHeader = document.getElementById("entries-title");
@@ -24,7 +26,7 @@ export const setupAuth = auth => {
           `;
 
           // setup new user based on the retreived information
-          const currUser = new User(user, username, currency);
+          const currUser = new User(user, username, currency, order);
 
           // set up user 'crud' options for user
           currUser.createDataOptions();
@@ -64,7 +66,8 @@ export const setupAuth = auth => {
           .doc(userData.user.uid)
           .set({
             username: username,
-            currency: currency
+            currency: currency,
+            order: "date"
           });
       })
       .then(signupForm.reset());
@@ -90,6 +93,5 @@ export const setupAuth = auth => {
   logout.addEventListener("click", event => {
     event.preventDefault();
     auth.signOut();
-    console.log("logged out");
   });
 };

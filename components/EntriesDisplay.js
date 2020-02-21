@@ -14,6 +14,10 @@ export function displayEntries(entries, currency) {
       entryContainer.id = entry.id;
       entryContainer.className = "entry-container";
 
+      let entryDate = document.createElement("p");
+      entryDate.className = "entry-date";
+      entryDate.innerHTML = entry.date;
+
       let entryCoin = document.createElement("a");
       entryCoin.className = "entry-coin";
       entryCoin.setAttribute("data-toggle", "modal");
@@ -87,6 +91,7 @@ export function displayEntries(entries, currency) {
       showChartBtn.setAttribute("data-target", "#coin-chart-container");
       showChartBtn.innerHTML = "Price Chart";
 
+      entryContainer.appendChild(entryDate);
       entryContainer.appendChild(entryCoinDiv);
       entryContainer.appendChild(entryAmount);
       entryContainer.appendChild(entryBuyDiv);

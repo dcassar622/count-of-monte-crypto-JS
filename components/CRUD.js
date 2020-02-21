@@ -8,6 +8,11 @@ export const setupDataOptions = (user, User) => {
     let idNum = Math.round(Date.now() + Math.random());
     let id = idNum.toString();
 
+    // calculate today's date (DD/MM/YYYY)
+    let today = new Date();
+    let date = `${today.getDate()}/${today.getMonth() +
+      1}/${today.getFullYear()}`;
+
     let coinNameAll = entryForm["coin"].value;
     // get coin symbol (first three characters before space)
     let coinSymbol = coinNameAll.substr(0, coinNameAll.indexOf(" "));
@@ -29,6 +34,7 @@ export const setupDataOptions = (user, User) => {
       .doc(id)
       .set({
         id: id,
+        date: date,
         coin: coinSymbol,
         coinName: coinName,
         amount: amount,
@@ -73,5 +79,16 @@ export const setupDataOptions = (user, User) => {
   currencySelector.addEventListener("change", event => {
     let newCurrency = event.target.value;
     User.updateCurrency(newCurrency);
+  });
+
+  /* CHANGE ENTRIES ORDER */
+  const orderSelector = document.getElementById("sort-order-selector");
+  orderSelector.addEventListener("change", event => {
+    // get user's order selection
+    let sortBy = event.target.value;
+
+    // write preference to user's file in the DB and update UI
+    User.setOrder(sortBy);
+    User.renderEntries();
   });
 };

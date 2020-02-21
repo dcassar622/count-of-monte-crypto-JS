@@ -4,10 +4,11 @@ import { setupUI } from "./UI.js";
 import { setupDataOptions } from "./CRUD.js";
 
 export class User {
-  constructor(user, username, currency) {
+  constructor(user, username, currency, order) {
     this.user = user;
     this.username = username;
     this.currency = currency;
+    this.order = order;
   }
 
   /* CREATE USER INTERFACE */
@@ -19,17 +20,32 @@ export class User {
   /* DISPLAY CURRENT PORTFOLIO */
   async renderEntries() {
     // get user's current entries from database
-    let snapshot = await db
-      .collection("users")
-      .doc(this.user.uid)
-      .collection("entries")
-      .get();
+    let snapshot = "";
+
+    // if ordered by date
+    if (this.order === "date") {
+      snapshot = await db
+        .collection("users")
+        .doc(this.user.uid)
+        .collection("entries")
+        .get();
+    }
+    // if ordered by coin
+    else if (this.order === "coin") {
+      snapshot = await db
+        .collection("users")
+        .doc(this.user.uid)
+        .collection("entries")
+        .orderBy("coin")
+        .get();
+    }
 
     // parse the data from the current snapshot
     let entriesDB = snapshot.docs.map(doc => doc.data());
 
     // calculate the dynamic price/delta values for each entry
     let entries = await completeEntries(entriesDB, this.currency);
+    console.log(entries);
 
     // set the default currency on the currency selector menu
     const currencySelector = document.getElementById("currency-selector");
@@ -51,7 +67,7 @@ export class User {
 
     db.collection("users")
       .doc(this.user.uid)
-      .set({
+      .update({
         currency: newCurrency
       });
 
@@ -83,5 +99,15 @@ export class User {
     });
     this.renderEntries();
     this.renderUI();
+  }
+
+  setOrder(order) {
+    db.collection("users")
+      .doc(this.user.uid)
+      .update({
+        order: order
+      });
+
+    this.order = order;
   }
 }

@@ -26,6 +26,7 @@ export const completeEntries = async (dbEntries, currency) => {
     let newEntry = {
       // static values
       id: dbEntries[i].id,
+      date: dbEntries[i].date,
       coin: dbEntries[i].coin,
       coinName: dbEntries[i].coinName,
       amount: dbEntries[i].amount,

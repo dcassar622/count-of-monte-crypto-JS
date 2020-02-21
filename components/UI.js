@@ -23,7 +23,15 @@ export const setupUI = (user, currency, username) => {
     });
 
     let usernameArea = document.getElementById("welcome-message");
-    usernameArea.innerHTML = `${username}`;
+    let date = new Date();
+    let hour = date.getHours();
+    let greeting = "";
+
+    if (hour < 12) greeting = "Good Morning";
+    else if (hour > 12 && hour < 18) greeting = "Good Afternoon";
+    else if (hour > 18) greeting = "Good Evening";
+
+    usernameArea.innerHTML = `${greeting}, ${username}`;
 
     setupVolumeChart(currency);
     setupCoinCharts(currency, user);

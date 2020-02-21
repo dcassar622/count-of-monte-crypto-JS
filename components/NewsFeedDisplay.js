@@ -1,6 +1,7 @@
-let newsFeedSection = document.getElementById("news-feed-section");
+let newsFeedArea = document.getElementById("news-area");
 
 export function displayNewsFeed(items) {
+  // news items
   items.forEach(item => {
     let newsItemDiv = document.createElement("div");
     newsItemDiv.className = "news-item-div";
@@ -28,6 +29,6 @@ export function displayNewsFeed(items) {
     newsItemDiv.appendChild(body);
     newsItemDiv.appendChild(url);
 
-    newsFeedSection.appendChild(newsItemDiv);
+    newsFeedArea.appendChild(newsItemDiv);
   });
 }
