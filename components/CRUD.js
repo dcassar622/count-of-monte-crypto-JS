@@ -39,9 +39,13 @@ export const setupDataOptions = (user, User) => {
         coinName: coinName,
         amount: amount,
         buyPrice: buyPrice
+      })
+      .then(() => {
+        entryForm.reset();
       });
+
+    $("#modal-entry").modal("hide");
   });
-  entryForm.reset();
 
   /* DELETE ENTRY */
   const entriesSection = document.getElementById("entries-section");

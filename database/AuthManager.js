@@ -71,6 +71,8 @@ export const setupAuth = auth => {
           });
       })
       .then(signupForm.reset());
+
+    $("#modal-signup").modal("hide");
   });
 
   /* ----- login ----- */
@@ -86,12 +88,24 @@ export const setupAuth = auth => {
       console.log("logged in", userData.user.uid);
       loginForm.reset();
     });
+
+    $("#modal-login").modal("hide");
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   });
 
   /* ----- logout ----- */
   const logout = document.getElementById("logout");
   logout.addEventListener("click", event => {
     event.preventDefault();
-    auth.signOut();
+    auth.signOut().then(() => {
+      setupUI();
+    });
+
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
   });
 };

@@ -79,7 +79,7 @@
         </div>
 
         <!--login modal-->
-        <div id='modal-login' class='modal fade' role='dialog'>
+        <div id='modal-login' class='modal fade' role='dialog' data-dismiss="modal">
             <div class="modal-dialog modal-md">
                 <form id='login-form'>
                     <div class="modal-content form-horizontal">
@@ -110,7 +110,7 @@
         </div>
 
         <!--new entry modal-->
-        <div id='modal-entry' class='modal fade' role='dialog'>
+        <div id='modal-entry' class='modal fade' role='dialog' data-dismiss="modal">
             <div class="modal-dialog modal-md">
                 <form id='entry-form'>
                     <div class="modal-content form-horizontal">
@@ -136,7 +136,9 @@
 
         <!-- LOG IN MESSAGE-->
         <section id='login-message-section' class='logged-out'>
-            <h4>Hello human/humanoid/space being! <br> Please create an account or log in to initiate the magic!</h4>
+            <h3>Hello human/humanoid/space being!</h3>
+            <br>
+            <h4>Please create an account or log in to initiate the magic!</h4>
         </section>
 
         <!-- ENTRIES WRAPPER -->
@@ -194,7 +196,7 @@
             </section>
            
             <!-- COIN CHART -->
-            <section id='coin-chart-container' class='modal fade' tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <section id='coin-chart-container' class='modal fade' tabindex="-1" role="dialog" data-dismiss="modal" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -250,7 +252,7 @@
         <!-- FOOTER -->
         <section id='footer-wrapper' class='wrapper'>
             <h5>Website design by Daniel Cassar</h5>
-            <h6>&#xA9; Count Of Monte Crypto 2020</h5>
+            <h6>&#xA9; Count Of Monte Crypto 2020</h6>
         </section>
         
     </div>
@@ -301,4 +303,5 @@
     <script src="main.js" type='module'></script>
     
   </body>
+
 </html>
