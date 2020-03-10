@@ -347,6 +347,10 @@ select:hover {
   padding: 2rem;
 }
 
+#data-section-title {
+  padding: 20px;
+}
+
 #data-wrapper h3 {
   color: white;
 }
@@ -372,9 +376,10 @@ select:hover {
 }
 
 #vol-chart {
+  padding: 10px;
   height: 100%;
   background: rgb(36, 34, 34);
-  border-radius: 0 50px 0 50px;
+  border-radius: 0 50px 0 0;
   color: white;
 }
 
@@ -489,59 +494,8 @@ select:hover {
 
 /* ---------- MEDIA QUERIES ---------- */
 
-/* phones (portrait and landscape) ----------- */
-
-@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
-  .entry-container {
-    display: grid;
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  #entries-header-container {
-    display: none;
-  }
-
-  #user-options-container {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  #totals-container {
-    grid-template-columns: repeat(1, 1fr);
-    font-size: 1.2rem;
-  }
-
-  #data-area {
-    flex-direction: column;
-    min-width: 100%;
-  }
-
-  #data-area-left,
-  #news-feed-section {
-    min-width: 100%;
-    margin-bottom: 2rem;
-  }
-
-  #vol-chart-section {
-    min-width: 100%;
-    margin-bottom: 4rem;
-  }
-
-  #vol-chart {
-    min-height: 100%;
-    min-width: 200px;
-  }
-
-  .table-row {
-    grid-template-columns: repeat(1, 1fr);
-  }
-
-  #market-cap-table-header {
-    display: none;
-  }
-}
-
 /* tablets (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 667px) and (max-device-width: 1024px) {
+@media only screen and (min-device-width: 667px) and (max-device-width: 1023px) {
   .entry-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -584,5 +538,94 @@ select:hover {
 
   #market-cap-table-header {
     display: none;
+  }
+}
+
+/* phones (portrait and landscape) ----------- */
+
+@media only screen and (min-device-width: 320px) and (max-device-width: 768px) {
+  #logo {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  #nav-right {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  #nav-right li,
+  #nav-right a {
+    font-size: 12px;
+  }
+
+  #entries-section {
+    width: 90%;
+    margin: 5%;
+  }
+
+  .entry-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  #entries-header-container {
+    display: none;
+  }
+
+  #user-options-container {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  #totals-container {
+    grid-template-columns: repeat(1, 1fr);
+    font-size: 1.2rem;
+  }
+
+  #data-wrapper {
+    padding: 0;
+  }
+
+  #data-area {
+    padding: 1rem;
+    flex-direction: column;
+    min-width: 100%;
+  }
+
+  #data-area h4 {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+
+  #data-area-left,
+  #news-feed-section {
+    min-width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  #vol-chart-section {
+    min-width: 100%;
+    margin-bottom: 4rem;
+  }
+
+  #vol-chart {
+    min-height: 100%;
+    min-width: 200px;
+  }
+
+  .table-row {
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  #market-cap-table-header {
+    display: none;
+  }
+
+  .news-image {
+    padding-bottom: 20px;
+    border-radius: 10px;
+    float: none;
   }
 }
