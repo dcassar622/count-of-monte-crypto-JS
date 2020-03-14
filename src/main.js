@@ -1,5 +1,5 @@
 import { setupAuth } from "./database/AuthManager.js";
-import { setupAutoComplete, getCoinList } from "./components/AutoComplete.js";
+import { setupAutoComplete } from "./components/AutoComplete.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   // initialise auth manager

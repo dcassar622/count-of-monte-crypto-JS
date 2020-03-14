@@ -6,7 +6,6 @@ export async function setupNewsFeed() {
   );
   let dataJSON = await dataAPI.json();
   let newsFeedItems = dataJSON.Data;
-  console.log(newsFeedItems);
 
   displayNewsFeed(newsFeedItems);
 }

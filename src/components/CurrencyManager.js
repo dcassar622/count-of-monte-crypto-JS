@@ -1,4 +1,4 @@
-import { displayEntries, displayTotals } from "./EntriesDisplay.js";
+import { displayEntries } from "./EntriesDisplay.js";
 import { calcTotal } from "./PortfolioManager.js";
 
 export function getCurrencySymbol(currency) {

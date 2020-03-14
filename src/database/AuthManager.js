@@ -6,7 +6,6 @@ export const setupAuth = auth => {
   /* ----- login/logout state change ----- */
   auth.onAuthStateChanged(user => {
     if (user) {
-      console.log(user.uid);
       // get user's username and currency of choice
       db.collection("users")
         .doc(user.uid)

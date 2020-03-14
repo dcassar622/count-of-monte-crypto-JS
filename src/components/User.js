@@ -13,7 +13,6 @@ export class User {
 
   /* CREATE USER INTERFACE */
   renderUI() {
-    console.log(this.username);
     setupUI(this.user, this.currency, this.username);
   }
 
@@ -45,7 +44,6 @@ export class User {
 
     // calculate the dynamic price/delta values for each entry
     let entries = await completeEntries(entriesDB, this.currency);
-    console.log(entries);
 
     // set the default currency on the currency selector menu
     const currencySelector = document.getElementById("currency-selector");

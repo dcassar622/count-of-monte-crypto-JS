@@ -128,13 +128,13 @@ select:hover {
 /* ---------- LOGIN MESSAGE ---------- */
 
 #login-message-section {
-  min-width: 80vw;
+  width: 80%;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 30vh;
-  margin-left: 20%;
+  margin-left: 15%;
 }
 
 /* ---------- FORM ---------- */
